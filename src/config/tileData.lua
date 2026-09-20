@@ -1,0 +1,31 @@
+local tileData = {
+    A = {count = 9, points = 1, vowel = true},
+    B = {count = 2, points = 3, vowel = false},
+    C = {count = 2, points = 3, vowel = false},
+    D = {count = 4, points = 2, vowel = false},
+    E = {count = 12, points = 1, vowel = true},
+    F = {count = 2, points = 4, vowel = false},
+    G = {count = 3, points = 2, vowel = false},
+    H = {count = 2, points = 4, vowel = false},
+    I = {count = 9, points = 1, vowel = true},
+    J = {count = 1, points = 8, vowel = false},
+    K = {count = 1, points = 5, vowel = false},
+    L = {count = 4, points = 1, vowel = false},
+    M = {count = 2, points = 3, vowel = false},
+    N = {count = 6, points = 1, vowel = false},
+    O = {count = 8, points = 1, vowel = true},
+    P = {count = 2, points = 3, vowel = false},
+    Q = {count = 1, points = 10, vowel = false},
+    R = {count = 6, points = 1, vowel = false},
+    S = {count = 4, points = 1, vowel = false},
+    T = {count = 6, points = 1, vowel = false},
+    U = {count = 4, points = 1, vowel = true},
+    V = {count = 2, points = 4, vowel = false},
+    W = {count = 2, points = 4, vowel = false},
+    X = {count = 1, points = 8, vowel = false},
+    Y = {count = 2, points = 4, vowel = false},
+    Z = {count = 1, points = 10, vowel = false},
+    ["?"] = {count = 2, points = 0, vowel = nil}
+}
+
+return tileData
