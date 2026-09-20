@@ -11,7 +11,7 @@ function tile.unblank(letter)
 end
 
 function tile.isBlank(letter)
-    return (letter == letter:lower() or letter == "?") and (letter:match("[a-z]$") ~= nil)
+    return letter == "?" or (type(letter) == "string" and letter:match("^[a-z]$") ~= nil)
 end
 
 function tile.score(letter)
@@ -24,7 +24,7 @@ function tile.isValid(letter)
 end
 
 function tile.rackForm(letter)
-    if letter.isBlank(letter) then
+    if tile.isBlank(letter) then
         return "?"
     else
         return letter

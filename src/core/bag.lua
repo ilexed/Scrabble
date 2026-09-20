@@ -7,7 +7,6 @@ function Bag:new(rng, distribution)
     local o = {
         tiles = {},
         rng = rng or math.random,
-        fixedOrder = false
     }
 
     local distribution = distribution or tileData
@@ -25,22 +24,6 @@ function Bag:new(rng, distribution)
 
     return setmetatable(o, self)
 
-end
-
-function Bag:refill(distribution)
-    local distribution = distribution or tileData
-
-    self.tiles = {}
-
-    for letter, data in pairs(distribution)
-        local count = data.count
-
-        for i = 1, count do
-            self.tiles[#self.tiles + 1] = letter
-        end
-    end
-
-    table.sort(self.tiles)
 end
 
 function Bag:draw(n)
@@ -76,21 +59,15 @@ function Bag:drawAtMost(n)
 end
 
 function Bag:putBack(letters)
-    assert(#letters >= 0, "Tried to put back " .. tostring(#letters) .. " tiles, a negative number.")
-
-    if #letters == 0 then
-        return
-    end
-
     for _, letter in ipairs(letters) do
-        self.tiles(#self.tiles + 1) = letter
+        self.tiles[#self.tiles + 1] = letter
     end
 end
 
 function Bag:exchange(letters)
     local newTiles, err = self:draw(#letters)
 
-    if err ~= nil then
+    if not newTiles then
         return nil, err
     end
 
