@@ -1,4 +1,4 @@
-local Game = require "src.core.game"
+local Game = require "engine.core.game"
 
 local function printBoard(board)
     for row = 1, board:getDimensions() do

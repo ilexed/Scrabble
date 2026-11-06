@@ -1,4 +1,4 @@
-local Rack = require "src.core.rack"
+local Rack = require "engine.core.rack"
 
 local Player = {}
 Player.__index = Player

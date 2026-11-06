@@ -1,6 +1,6 @@
-local Board = require "src.core.board"
-local Player = require "src.core.player"
-local Bag = require "src.core.bag"
+local Board = require "engine.core.board"
+local Player = require "engine.core.player"
+local Bag = require "engine.core.bag"
 
 local Game = {}
 Game.__index = Game

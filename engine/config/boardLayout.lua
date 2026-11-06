@@ -1,4 +1,6 @@
-local bonusSquares = {
+local boardLayout - {}
+
+local boardLayout.bonusSquares = {
     "T..d...T...d..T",
     ".D...t...t...D.",
     "..D...d.d...D..",
@@ -16,12 +18,12 @@ local bonusSquares = {
     "T..d...T...d..T",
 }
 
-local legend = {
+local boardLayout.legend = {
     ["."] = {word = 1, letter = 1},
-    d = {word = 1, letter = 2},
-    t = {word = 1, letter = 3},
-    D = {word = 2, letter = 1},
-    T = {word = 3, letter = 1}
+    ["d"] = {word = 1, letter = 2},
+    ["t"] = {word = 1, letter = 3},
+    ["D"] = {word = 2, letter = 1},
+    ["T"] = {word = 3, letter = 1},
 }
 
-return {bonusSquares, legend}
+return boardLayout

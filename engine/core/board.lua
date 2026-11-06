@@ -1,5 +1,5 @@
-local bonusSquares, legend = unpack(require "src.config.boardLayout" )
-local tile = require "src.core.tile"
+local bonusSquares, legend = unpack(require "engine.config.boardLayout" )
+local tile = require "engine.core.tile"
 
 local Board = {}
 Board.__index = Board
@@ -60,6 +60,11 @@ function Board:place(row, col, letter)
     return true
 end
 
+function Board:placeFromPlacements(placements)
+    for _, placement in placements do
+        self:place(placement[1], placement[2], placement[3])
+    end
+end
 
 function Board:hasLetter(row, col)
     return self:get(row, col) and true or false

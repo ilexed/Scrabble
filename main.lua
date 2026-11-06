@@ -1,6 +1,6 @@
 function love.load()
     love.window.setMode(1280, 720)
-    Game = require "src.core.game"
+    Game = require "engine.core.game"
     game = Game:new()
     love.graphics.setBackgroundColor(40/255, 40/255, 40/255)
     love.graphics.setNewFont(35)
@@ -19,16 +19,18 @@ function love.load()
     tileSize = 40
     paddingH = 320
     paddingV = 60
-    game.board:place(1, 1, "C")
-    game.board:place(1, 2, "A")
-    game.board:place(1, 3, "T")
+    local placements = {{1, 1, "L"}, {1, 2, "O"}, {1, 3, "Q"}}
+    game.board:placeFromPlacements(placements)
+
+    UIBoard = BoardView:new(game.board)
 end
 
 function love.update(dt)
+    
 end
 
 function love.draw()
-    drawBoard(game.board)
+    UIBoard:draw()
 end
 
 function love.keypressed(key)
@@ -40,50 +42,6 @@ end
 function setColor(name)
     local c = colors[name]
     love.graphics.setColor(c[1] / 255, c[2] / 255, c[3] / 255, (c[4] or 255) / 255)
-end
-
-function drawSquare(type, x, y)
-    setColor(type)
-    love.graphics.rectangle("fill", x, y, tileSize, tileSize)
-    setColor("tile_outline")
-    love.graphics.rectangle("line", x, y, tileSize, tileSize)
-    setColor("white")
-end
-
-function drawLetterSquare(letter, x, y)
-    setColor("letter")
-    love.graphics.rectangle("fill", x, y, tileSize, tileSize)
-    setColor("tile_outline")
-    love.graphics.rectangle("line", x, y, tileSize, tileSize)
-    love.graphics.print(letter:upper(), x + 5, y)
-    setColor("white")
-end
-
-function drawBoard(board)
-    for row = 1, board:getDimensions() do 
-        for col = 1, board:getDimensions() do
-            local t = board:get(row, col)
-            if t then
-                drawLetterSquare(t, paddingH + (col-1) * tileSize, paddingV + (row-1) * tileSize)
-            else
-                local bonus = board:getBonusLetter(row, col)
-                local type = "white"
-                if bonus == "." then
-                    type = "base"
-                elseif bonus == "d" then
-                    type = "dl"
-                elseif bonus == "t" then
-                    type = "tl"
-                elseif bonus == "D" then 
-                    type = "dw"
-                elseif bonus == "T" then 
-                    type = "tw"
-                end
-
-                drawSquare(type, paddingH + (col-1) * tileSize, paddingV + (row-1) * tileSize)
-            end
-        end
-    end
 end
 
 

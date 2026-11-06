@@ -1,4 +1,4 @@
-local tileData = require "src.config.tileData"
+local tileData = require "engine.config.tileData"
 
 local tile = {}
 
